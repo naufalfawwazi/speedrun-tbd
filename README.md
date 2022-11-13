@@ -25,3 +25,11 @@
     │   |   ├── hp          [VARCHAR(16) NOT NULL]
 
 ## Folder Structure:
+
+    .
+    │   ├── produk
+    │   |   ├── main.py
+    │   ├── pemesanan
+    │   |   ├── main.py
+    │   ├── pembelian
+    │   |   ├── main.py
