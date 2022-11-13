@@ -1,9 +1,9 @@
 from importlib import util as iutil
 
 lib1 = iutil.spec_from_file_location(
-    "connectDB", "C:/xampp/htdocs/collaborations/speedrun-tbd/functions/connectDB.py")
+    "connectDB", "speedrun-tbd\\functions\\connectDB.py")
 lib2 = iutil.spec_from_file_location(
-    "insertMany", "C:/xampp/htdocs/collaborations/speedrun-tbd/functions/display.py")
+    "insertMany", "speedrun-tbd\\functions\\display.py")
 
 connectDB = iutil.module_from_spec(lib1)
 displayData = iutil.module_from_spec(lib2)
