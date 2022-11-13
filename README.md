@@ -14,7 +14,12 @@
     │   |   ├── idPemesanan
     │   |   ├── idProduk
     │   |   ├── idPembeli
+    │   |   ├── namaProduk
+    │   |   ├── namaPembeli
     │   |   ├── total
     │   |   ├── tanggal
     │   ├── tbl_pembeli
     │   |   ├── idPembeli
+    │   |   ├── namaPembeli
+    │   |   ├── alamat
+    │   |   ├── noHp
