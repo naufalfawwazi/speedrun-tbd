@@ -9,6 +9,7 @@ Original file is located at
 
 from importlib import util as iutil
 from termcolor import cprint
+from datetime import date
 
 
 def tampil(sql):
@@ -111,6 +112,18 @@ def tampilPembeli():
     return result
 
 
+def tampilPemesanan():
+    sqlPemesanan = '''
+      SELECT *
+      FROM tbl_pemesanan;
+      '''
+    result = tampil(sqlPemesanan)
+    for res in result:
+        print(res)
+
+    return result
+
+
 def tambahMainan():
     namaProduk = input('Nama Mainan: ')
     harga = int(input('Harga Mainan: '))
@@ -183,22 +196,42 @@ def catatPemesanan():
     tampilMainan()
     idProduk = int(input('ID Mainan yang dibeli: '))
 
-    harga = 0  # ambil harga produk yang dibeli
+    sqlProduk = f'''
+      SELECT *
+      FROM tbl_produk WHERE idProduk={idProduk};
+      '''
+    idProduk,namaProduk,harga = tampil(sqlProduk)
+
+    sqlProduk = f'''
+      SELECT *
+      FROM tbl_pembeli WHERE idPembeli={idPembeli};
+      '''
+    idPembeli,namaPembeli,alamat,hp = tampil(sqlPembeli)
+
     jumlah = int(input('Jumlah beli: '))
     total = jumlah * harga
-    from datetime import date
     tanggal = date.today()
 
-    idProduk = 0  # ambil id produk pakai read tbl_produk
-    idPembeli = 0  # ambil id pembeli pakai read tbl_pembeli
-
     # insert ke tbl_pemesanan
+
+    sqlPemesanan = '''
+      INSERT INTO tbl_pemesanan 
+      ( idProduk, idPembeli, namaProduk, namaPembeli, jumlah, total, tanggal ) 
+      VALUES ( %s, %s, %s, %s, %s, %s, %s)
+      '''
+
+    valPemesanan = [
+        (idProduk, idPembeli, namaProduk, namaPembeli, jumlah, total, tanggal)
+    ]
+
+    tambah(sqlPemesanan, valPemesanan)
+
 
 
 def main():
     pilih = 0
 
-    while pilih != 8:
+    while pilih != 9:
         cprint('-= TOKO MAINAN UHUY =-', 'red', 'on_cyan')
         print('1. Lihat Etalase Mainan')
         print('2. Tambah Mainan')
@@ -206,27 +239,22 @@ def main():
         print('4. Hapus Mainan')
         print('5. Lihat Pelanggan')
         print('6. Tambah Pelanggan')
-        print('7. Catat Pemesanan Mainan')
-        print('8. Keluar')
+        print('7. Lihat Data Pemesanan')
+        print('8. Catat Pemesanan Mainan')
+        print('9. Keluar')
 
-        print("\n")
+        print()
         pilih = int(input('Pilih Operasi: '))
 
-        if pilih == 1:
-            tampilMainan()
-        if pilih == 2:
-            tambahMainan()
-        if pilih == 3:
-            ubahMainan()
-        if pilih == 4:
-            hapusMainan()
-        if pilih == 5:
-            tampilPembeli()
-        if pilih == 6:
-            tambahPelanggan()
-        if pilih == 7:
-            catatPemesanan()
-        print("\n")
+        if pilih == 1: tampilMainan()
+        if pilih == 2: tambahMainan()
+        if pilih == 3: ubahMainan()
+        if pilih == 4: hapusMainan()
+        if pilih == 5: tampilPembeli()
+        if pilih == 6: tambahPelanggan()
+        if pilih == 7: tampilPemesanan()
+        if pilih == 8: catatPemesanan()
+        print()
 
 
 if __name__ == '__main__':
