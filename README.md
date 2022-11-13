@@ -34,3 +34,8 @@
     │   |   ├── test-insertmany.py
     │   ├── ??
     │   |   ├── ??
+
+## GUIDE:
+
+`pip install MySQL-python`
+` pip install termcolor`
