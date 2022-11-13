@@ -2,6 +2,25 @@
 
 # Toko Mainan Uhuy
 
+## GUIDE:
+
+`pip install MySQL-python`
+` pip install termcolor`
+
+## Folder Structure:
+
+    .
+    │   ├── app
+    │   |   ├── main.py
+    │   ├── functions
+    │   |   ├── connectDB.py
+    │   |   ├── delete.py
+    │   |   ├── display.py
+    │   |   ├── insertMany.py
+    │   |   ├── update.py
+    │   ├── .gitignore
+    │   ├── db_tokomainan.sql
+
 ## Database Design's Structure
 
     db_tokomainan
@@ -23,19 +42,3 @@
     │   |   ├── namaPembeli [VARCHAR(255) NOT NULL]
     │   |   ├── alamat      [TEXT NOT NULL]
     │   |   ├── hp          [VARCHAR(16) NOT NULL]
-
-## Folder Structure:
-
-    .
-    │   ├── functions
-    │   |   ├── connectDB.py
-    │   |   ├── insertMany.py
-    │   ├── testing
-    │   |   ├── test-insertmany.py
-    │   ├── ??
-    │   |   ├── ??
-
-## GUIDE:
-
-`pip install MySQL-python`
-` pip install termcolor`
