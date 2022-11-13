@@ -43,6 +43,40 @@ def tambah(sql, val):
 
   insertMany.insertMany(connect, sql, val)
 
+def update(sql, val):
+  lib1 = iutil.spec_from_file_location(
+      "connectDB", "C:/xampp/htdocs/collaborations/speedrun-tbd/functions/connectDB.py")
+  lib2 = iutil.spec_from_file_location(
+      "update", "C:/xampp/htdocs/collaborations/speedrun-tbd/functions/update.py")
+
+  connectDB = iutil.module_from_spec(lib1)
+  updateData = iutil.module_from_spec(lib2)
+
+  lib1.loader.exec_module(connectDB)
+  lib2.loader.exec_module(updateData)
+
+  # test connection successful
+  connect = connectDB.connection("localhost", "root", "root", "db_tokomainan")
+
+  updateData.update(connect, sql, val)
+
+def delete(sql, val):
+  lib1 = iutil.spec_from_file_location(
+      "connectDB", "C:/xampp/htdocs/collaborations/speedrun-tbd/functions/connectDB.py")
+  lib2 = iutil.spec_from_file_location(
+      "delete", "C:/xampp/htdocs/collaborations/speedrun-tbd/functions/delete.py")
+
+  connectDB = iutil.module_from_spec(lib1)
+  deleteData = iutil.module_from_spec(lib2)
+
+  lib1.loader.exec_module(connectDB)
+  lib2.loader.exec_module(deleteData)
+
+  # test connection successful
+  connect = connectDB.connection("localhost", "root", "root", "db_tokomainan")
+
+  deleteData.delete(connect, sql, val)
+
 def tampilMainan():
   sqlProduk = '''
       SELECT *
@@ -80,15 +114,6 @@ def tambahMainan():
 
   tambah(sqlProduk, valProduk)
 
-def ubahMainan():
-  namaProduk = input('Nama Mainan yang ingin diubah: ')
-  harga = int(input('Harga baru Mainan: '))
-  # update di tbl_produk
-
-def hapusMainan():
-  namaProduk = input('Nama Mainan yang ingin dihapus: ')
-  # delete dari tbl_produk
-
 def tambahPelanggan():
   namaPembeli = input('Nama Pembeli: ')
   alamat = input('Alamat Pembeli: ')
@@ -104,6 +129,36 @@ def tambahPelanggan():
   ]
 
   tambah(sqlPembeli, valPembeli)
+
+def ubahMainan():
+  namaProduk = input('Nama Mainan yang ingin diubah: ')
+  harga = int(input('Harga baru Mainan: '))
+  # update di tbl_produk
+
+  sqlProduk = '''
+      UPDATE tbl_produk SET namaProduk=%s, harga=%s
+      WHERE namaProduk=%s
+      '''
+
+  valProduk = [
+      (namaProduk, harga, namaProduk)
+  ]
+
+  update(sqlProduk, valProduk)
+
+def hapusMainan():
+  namaProduk = input('Nama Mainan yang ingin dihapus: ')
+  # delete dari tbl_produk
+
+  sqlProduk = '''
+      DELETE FROM tbl_produk WHERE namaProduk=%s
+      '''
+
+  valProduk = [
+      (namaProduk)
+  ]
+
+  delete(sqlProduk, valProduk)
 
 def catatPemesanan():
   tampilPembeli()
@@ -128,15 +183,16 @@ def catatPemesanan():
 def main():
   pilih = 0
   
-  while pilih != 7:
+  while pilih != 8:
     print('-= TOKO MAINAN UHUY =-')
     print('1. Lihat Etalase Mainan')
     print('2. Tambah Mainan')
     print('3. Ubah Mainan')
     print('4. Hapus Mainan')
     print('5. Tambah Pelanggan')
-    print('6. Catat Pemesanan Mainan')
-    print('7. Keluar')
+    print('6. Tambah Pelanggan')
+    print('7. Catat Pemesanan Mainan')
+    print('8. Keluar')
 
     pilih = int(input('Pilih Operasi: '))
 
@@ -144,8 +200,9 @@ def main():
     if pilih == 2: tambahMainan()
     if pilih == 3: ubahMainan()
     if pilih == 4: hapusMainan()
-    if pilih == 5: tambahPelanggan()
-    if pilih == 6: catatPemesanan()
+    if pilih == 5: tampilPembeli()
+    if pilih == 6: tambahPelanggan()
+    if pilih == 7: catatPemesanan()
 
 if __name__ == '__main__':
   main()
