@@ -200,13 +200,16 @@ def catatPemesanan():
       SELECT *
       FROM tbl_produk WHERE idProduk={idProduk};
       '''
-    idProduk,namaProduk,harga = tampil(sqlProduk)
 
-    sqlProduk = f'''
+    resultProduk = tampil(sqlProduk)[0]
+    # print(resultProduk)
+    idProduk, namaProduk, harga = resultProduk
+
+    sqlPembeli = f'''
       SELECT *
       FROM tbl_pembeli WHERE idPembeli={idPembeli};
       '''
-    idPembeli,namaPembeli,alamat,hp = tampil(sqlPembeli)
+    idPembeli, namaPembeli, alamat, hp = tampil(sqlPembeli)[0]
 
     jumlah = int(input('Jumlah beli: '))
     total = jumlah * harga
@@ -227,7 +230,6 @@ def catatPemesanan():
     tambah(sqlPemesanan, valPemesanan)
 
 
-
 def main():
     pilih = 0
 
@@ -246,14 +248,22 @@ def main():
         print()
         pilih = int(input('Pilih Operasi: '))
 
-        if pilih == 1: tampilMainan()
-        if pilih == 2: tambahMainan()
-        if pilih == 3: ubahMainan()
-        if pilih == 4: hapusMainan()
-        if pilih == 5: tampilPembeli()
-        if pilih == 6: tambahPelanggan()
-        if pilih == 7: tampilPemesanan()
-        if pilih == 8: catatPemesanan()
+        if pilih == 1:
+            tampilMainan()
+        if pilih == 2:
+            tambahMainan()
+        if pilih == 3:
+            ubahMainan()
+        if pilih == 4:
+            hapusMainan()
+        if pilih == 5:
+            tampilPembeli()
+        if pilih == 6:
+            tambahPelanggan()
+        if pilih == 7:
+            tampilPemesanan()
+        if pilih == 8:
+            catatPemesanan()
         print()
 
 
