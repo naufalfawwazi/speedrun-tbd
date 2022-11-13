@@ -1,5 +1,6 @@
 import mysql.connector
 from mysql.connector import Error
+from termcolor import cprint
 
 
 def insertMany(connection, sql, val):
@@ -7,6 +8,6 @@ def insertMany(connection, sql, val):
     try:
         cursor.executemany(sql, val)
         connection.commit()
-        print("Data berhasil masuk!")
+        cprint("Data berhasil masuk", 'green', 'on_green')
     except Error as err:
         print(f"Error: '{err}'")
