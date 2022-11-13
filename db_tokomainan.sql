@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.0.3
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 13, 2022 at 08:18 AM
--- Server version: 10.4.21-MariaDB
--- PHP Version: 8.0.11
+-- Generation Time: Nov 13, 2022 at 08:24 AM
+-- Server version: 10.4.14-MariaDB
+-- PHP Version: 7.2.34
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -20,6 +20,19 @@ SET time_zone = "+00:00";
 --
 -- Database: `db_tokomainan`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_pembeli`
+--
+
+CREATE TABLE `tbl_pembeli` (
+  `idPembeli` int(11) NOT NULL,
+  `namaPembeli` varchar(255) NOT NULL,
+  `alamat` text NOT NULL,
+  `hp` int(10) UNSIGNED NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -46,7 +59,7 @@ CREATE TABLE `tbl_pemesanan` (
 CREATE TABLE `tbl_produk` (
   `idProduk` int(11) NOT NULL,
   `namaProduk` varchar(100) NOT NULL,
-  `harga` int(11) NOT NULL
+  `harga` int(11) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -54,10 +67,10 @@ CREATE TABLE `tbl_produk` (
 --
 
 --
--- Indexes for table `tbl_pemesanan`
+-- Indexes for table `tbl_pembeli`
 --
-ALTER TABLE `tbl_pemesanan`
-  ADD PRIMARY KEY (`idPemesanan`);
+ALTER TABLE `tbl_pembeli`
+  ADD PRIMARY KEY (`idPembeli`);
 
 --
 -- Indexes for table `tbl_produk`
@@ -70,10 +83,10 @@ ALTER TABLE `tbl_produk`
 --
 
 --
--- AUTO_INCREMENT for table `tbl_pemesanan`
+-- AUTO_INCREMENT for table `tbl_pembeli`
 --
-ALTER TABLE `tbl_pemesanan`
-  MODIFY `idPemesanan` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `tbl_pembeli`
+  MODIFY `idPembeli` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `tbl_produk`
