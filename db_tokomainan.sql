@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 13, 2022 at 08:24 AM
+-- Generation Time: Nov 13, 2022 at 08:31 AM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.2.34
 
@@ -73,6 +73,12 @@ ALTER TABLE `tbl_pembeli`
   ADD PRIMARY KEY (`idPembeli`);
 
 --
+-- Indexes for table `tbl_pemesanan`
+--
+ALTER TABLE `tbl_pemesanan`
+  ADD PRIMARY KEY (`idPemesanan`);
+
+--
 -- Indexes for table `tbl_produk`
 --
 ALTER TABLE `tbl_produk`
@@ -87,6 +93,12 @@ ALTER TABLE `tbl_produk`
 --
 ALTER TABLE `tbl_pembeli`
   MODIFY `idPembeli` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `tbl_pemesanan`
+--
+ALTER TABLE `tbl_pemesanan`
+  MODIFY `idPemesanan` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `tbl_produk`
