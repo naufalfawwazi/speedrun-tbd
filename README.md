@@ -7,9 +7,14 @@
     db_tokomainan
     .
     │   ├── tbl_produk
-    │   ├── tbl_pembelian
-    │   |   ├── idPembelian
-    │   |   ├── namaPembeli
+    │   |   ├── idProduk
     │   |   ├── namaProduk
-    │   |   ├── jumlahProduk
-    │   ├── ???
+    │   |   ├── harga
+    │   ├── tbl_pemesanan
+    │   |   ├── idPemesanan
+    │   |   ├── idProduk
+    │   |   ├── idPembeli
+    │   |   ├── total
+    │   |   ├── tanggal
+    │   ├── tbl_pembeli
+    │   |   ├── idPembeli
