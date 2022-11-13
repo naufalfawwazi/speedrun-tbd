@@ -27,9 +27,10 @@
 ## Folder Structure:
 
     .
-    │   ├── produk
-    │   |   ├── main.py
-    │   ├── pemesanan
-    │   |   ├── main.py
-    │   ├── pembelian
-    │   |   ├── main.py
+    │   ├── functions
+    │   |   ├── connectDB.py
+    │   |   ├── insertMany.py
+    │   ├── testing
+    │   |   ├── test-insertmany.py
+    │   ├── ??
+    │   |   ├── ??
