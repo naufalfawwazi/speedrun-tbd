@@ -1,5 +1,6 @@
 import mysql.connector
 from mysql.connector import Error
+from termcolor import cprint
 
 
 def connection(host_name, username, password, dbName):
@@ -11,7 +12,7 @@ def connection(host_name, username, password, dbName):
             passwd=password,
             database=dbName
         )
-        print("Koneksi Database Berhasil")
+        print(cprint("Koneksi Database Berhasil", 'green', 'on_green'))
     except Error as err:
         print(f"Error: '{err}'")
 
