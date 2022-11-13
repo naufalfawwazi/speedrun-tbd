@@ -2,19 +2,17 @@ import mysql.connector
 from mysql.connector import Error
 
 
-def connection(host_name, username, password):
+def connection(host_name, username, password, dbName):
     connection: None
     try:
         connection = mysql.connector.connect(
             host=host_name,
             user=username,
-            passwd=password
+            passwd=password,
+            database=dbName
         )
-        print("Koneksi Berhasil")
+        print("Koneksi Database Berhasil")
     except Error as err:
         print(f"Error: '{err}'")
 
     return connection
-
-
-connection("localhost", "root", "root")
