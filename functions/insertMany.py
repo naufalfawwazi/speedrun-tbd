@@ -1,3 +1,7 @@
+import mysql.connector
+from mysql.connector import Error
+
+
 def insertMany(connection, sql, val):
     cursor = connection.cursor()
     try:
