@@ -20,9 +20,20 @@ sqlPembeli = '''
     VALUES ( %s, %s, %s)
     '''
 
+sqlProduk = '''
+    INSERT INTO tbl_produk ( namaProduk, harga) 
+    VALUES ( %s, %s)
+    '''
+
 valPembeli = [
     ('Naufal', 'Tlogosari Raya', '0812345678'),
     ('Jimmy', 'Pedurungan Timur', '0814327682')
 ]
 
-insertMany.insertMany(connect, sqlPembeli, valPembeli)
+valProduk = [
+    ('Woody ToyStory', 60000),
+    ('Dr.Strange2', 82000)
+]
+
+
+insertMany.insertMany(connect, sqlProduk, valProduk)
