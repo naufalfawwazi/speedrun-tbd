@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.3
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 13, 2022 at 08:31 AM
--- Server version: 10.4.14-MariaDB
--- PHP Version: 7.2.34
+-- Generation Time: Nov 13, 2022 at 08:45 AM
+-- Server version: 10.4.21-MariaDB
+-- PHP Version: 8.0.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -31,8 +31,8 @@ CREATE TABLE `tbl_pembeli` (
   `idPembeli` int(11) NOT NULL,
   `namaPembeli` varchar(255) NOT NULL,
   `alamat` text NOT NULL,
-  `hp` int(10) UNSIGNED NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `hp` varchar(16) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -59,7 +59,7 @@ CREATE TABLE `tbl_pemesanan` (
 CREATE TABLE `tbl_produk` (
   `idProduk` int(11) NOT NULL,
   `namaProduk` varchar(100) NOT NULL,
-  `harga` int(11) UNSIGNED NOT NULL
+  `harga` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -76,7 +76,8 @@ ALTER TABLE `tbl_pembeli`
 -- Indexes for table `tbl_pemesanan`
 --
 ALTER TABLE `tbl_pemesanan`
-  ADD PRIMARY KEY (`idPemesanan`);
+  ADD KEY `idProduk` (`idProduk`),
+  ADD KEY `idPembeli` (`idPembeli`);
 
 --
 -- Indexes for table `tbl_produk`
@@ -95,16 +96,21 @@ ALTER TABLE `tbl_pembeli`
   MODIFY `idPembeli` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `tbl_pemesanan`
---
-ALTER TABLE `tbl_pemesanan`
-  MODIFY `idPemesanan` int(11) NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT for table `tbl_produk`
 --
 ALTER TABLE `tbl_produk`
   MODIFY `idProduk` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `tbl_pemesanan`
+--
+ALTER TABLE `tbl_pemesanan`
+  ADD CONSTRAINT `tbl_pemesanan_ibfk_1` FOREIGN KEY (`idProduk`) REFERENCES `tbl_produk` (`idProduk`),
+  ADD CONSTRAINT `tbl_pemesanan_ibfk_2` FOREIGN KEY (`idPembeli`) REFERENCES `tbl_pembeli` (`idPembeli`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
