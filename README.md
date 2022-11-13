@@ -2,7 +2,7 @@
 
 # Toko
 
-## Database Design's list
+## Database Design's Structure
 
     db_tokomainan
     .
