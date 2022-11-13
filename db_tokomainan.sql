@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 13, 2022 at 08:45 AM
+-- Generation Time: Nov 13, 2022 at 03:29 PM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.11
 
@@ -34,6 +34,15 @@ CREATE TABLE `tbl_pembeli` (
   `hp` varchar(16) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `tbl_pembeli`
+--
+
+INSERT INTO `tbl_pembeli` (`idPembeli`, `namaPembeli`, `alamat`, `hp`) VALUES
+(1, 'Naufal', 'Tlogosari Raya', '0812345678'),
+(2, 'Jimmy', 'Pedurungan Timur', '0814327682'),
+(9, 'Fachri', 'Jalan jalan uhuy', '08712435647');
+
 -- --------------------------------------------------------
 
 --
@@ -46,6 +55,7 @@ CREATE TABLE `tbl_pemesanan` (
   `idPembeli` int(11) NOT NULL,
   `namaProduk` varchar(100) NOT NULL,
   `namaPembeli` varchar(255) NOT NULL,
+  `jumlah` int(10) UNSIGNED NOT NULL,
   `total` int(10) UNSIGNED NOT NULL,
   `tanggal` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -61,6 +71,17 @@ CREATE TABLE `tbl_produk` (
   `namaProduk` varchar(100) NOT NULL,
   `harga` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `tbl_produk`
+--
+
+INSERT INTO `tbl_produk` (`idProduk`, `namaProduk`, `harga`) VALUES
+(1, 'Woody ToyStory', 60000),
+(2, 'Dr.Strange2', 82000),
+(3, 'Pesawat Tempur', 75000),
+(4, 'Tank Tempur', 20000),
+(5, 'Balon Merah', 5000);
 
 --
 -- Indexes for dumped tables
@@ -93,13 +114,13 @@ ALTER TABLE `tbl_produk`
 -- AUTO_INCREMENT for table `tbl_pembeli`
 --
 ALTER TABLE `tbl_pembeli`
-  MODIFY `idPembeli` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idPembeli` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `tbl_produk`
 --
 ALTER TABLE `tbl_produk`
-  MODIFY `idProduk` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idProduk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- Constraints for dumped tables
