@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 13, 2022 at 03:29 PM
+-- Generation Time: Nov 13, 2022 at 05:27 PM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.11
 
@@ -41,7 +41,8 @@ CREATE TABLE `tbl_pembeli` (
 INSERT INTO `tbl_pembeli` (`idPembeli`, `namaPembeli`, `alamat`, `hp`) VALUES
 (1, 'Naufal', 'Tlogosari Raya', '0812345678'),
 (2, 'Jimmy', 'Pedurungan Timur', '0814327682'),
-(9, 'Fachri', 'Jalan jalan uhuy', '08712435647');
+(9, 'Fachri', 'Jalan jalan uhuy', '08712435647'),
+(10, 'Fitri', 'Tlogosari Raya 20', '089234645651');
 
 -- --------------------------------------------------------
 
@@ -59,6 +60,14 @@ CREATE TABLE `tbl_pemesanan` (
   `total` int(10) UNSIGNED NOT NULL,
   `tanggal` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tbl_pemesanan`
+--
+
+INSERT INTO `tbl_pemesanan` (`idPemesanan`, `idProduk`, `idPembeli`, `namaProduk`, `namaPembeli`, `jumlah`, `total`, `tanggal`) VALUES
+(1, 5, 10, 'Balon Merah', 'Fitri', 3, 10500, '2022-11-13'),
+(2, 6, 1, 'Bola Kasti', 'Naufal', 10, 100000, '2022-11-13');
 
 -- --------------------------------------------------------
 
@@ -80,8 +89,8 @@ INSERT INTO `tbl_produk` (`idProduk`, `namaProduk`, `harga`) VALUES
 (1, 'Woody ToyStory', 60000),
 (2, 'Dr.Strange2', 82000),
 (3, 'Pesawat Tempur', 75000),
-(4, 'Tank Tempur', 20000),
-(5, 'Balon Merah', 5000);
+(5, 'Balon Merah', 3500),
+(6, 'Bola Kasti', 10000);
 
 --
 -- Indexes for dumped tables
@@ -97,6 +106,7 @@ ALTER TABLE `tbl_pembeli`
 -- Indexes for table `tbl_pemesanan`
 --
 ALTER TABLE `tbl_pemesanan`
+  ADD PRIMARY KEY (`idPemesanan`),
   ADD KEY `idProduk` (`idProduk`),
   ADD KEY `idPembeli` (`idPembeli`);
 
@@ -114,13 +124,19 @@ ALTER TABLE `tbl_produk`
 -- AUTO_INCREMENT for table `tbl_pembeli`
 --
 ALTER TABLE `tbl_pembeli`
-  MODIFY `idPembeli` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `idPembeli` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- AUTO_INCREMENT for table `tbl_pemesanan`
+--
+ALTER TABLE `tbl_pemesanan`
+  MODIFY `idPemesanan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `tbl_produk`
 --
 ALTER TABLE `tbl_produk`
-  MODIFY `idProduk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `idProduk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- Constraints for dumped tables
