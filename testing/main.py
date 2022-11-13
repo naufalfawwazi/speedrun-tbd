@@ -8,201 +8,226 @@ Original file is located at
 """
 
 from importlib import util as iutil
+from termcolor import cprint
+
 
 def tampil(sql):
-  lib1 = iutil.spec_from_file_location(
-    "connectDB", "C:/xampp/htdocs/collaborations/speedrun-tbd/functions/connectDB.py")
-  lib2 = iutil.spec_from_file_location(
-    "insertMany", "C:/xampp/htdocs/collaborations/speedrun-tbd/functions/display.py")
-  connectDB = iutil.module_from_spec(lib1)
-  displayData = iutil.module_from_spec(lib2)
+    lib1 = iutil.spec_from_file_location(
+        "connectDB", "C:/xampp/htdocs/collaborations/speedrun-tbd/functions/connectDB.py")
+    lib2 = iutil.spec_from_file_location(
+        "insertMany", "C:/xampp/htdocs/collaborations/speedrun-tbd/functions/display.py")
+    connectDB = iutil.module_from_spec(lib1)
+    displayData = iutil.module_from_spec(lib2)
 
-  lib1.loader.exec_module(connectDB)
-  lib2.loader.exec_module(displayData)
+    lib1.loader.exec_module(connectDB)
+    lib2.loader.exec_module(displayData)
 
-  # test connection successful
-  connect = connectDB.connection("localhost", "root", "root", "db_tokomainan")
+    # test connection successful
+    connect = connectDB.connection(
+        "localhost", "root", "root", "db_tokomainan")
 
-  results = displayData.read_query(connect, sql)
-  return results
+    results = displayData.read_query(connect, sql)
+    return results
+
 
 def tambah(sql, val):
-  lib1 = iutil.spec_from_file_location(
-      "connectDB", "C:/xampp/htdocs/collaborations/speedrun-tbd/functions/connectDB.py")
-  lib2 = iutil.spec_from_file_location(
-      "insertMany", "C:/xampp/htdocs/collaborations/speedrun-tbd/functions/insertMany.py")
+    lib1 = iutil.spec_from_file_location(
+        "connectDB", "C:/xampp/htdocs/collaborations/speedrun-tbd/functions/connectDB.py")
+    lib2 = iutil.spec_from_file_location(
+        "insertMany", "C:/xampp/htdocs/collaborations/speedrun-tbd/functions/insertMany.py")
 
-  connectDB = iutil.module_from_spec(lib1)
-  insertMany = iutil.module_from_spec(lib2)
+    connectDB = iutil.module_from_spec(lib1)
+    insertMany = iutil.module_from_spec(lib2)
 
-  lib1.loader.exec_module(connectDB)
-  lib2.loader.exec_module(insertMany)
+    lib1.loader.exec_module(connectDB)
+    lib2.loader.exec_module(insertMany)
 
-  # test connection successful
-  connect = connectDB.connection("localhost", "root", "root", "db_tokomainan")
+    # test connection successful
+    connect = connectDB.connection(
+        "localhost", "root", "root", "db_tokomainan")
 
-  insertMany.insertMany(connect, sql, val)
+    insertMany.insertMany(connect, sql, val)
+
 
 def update(sql, val):
-  lib1 = iutil.spec_from_file_location(
-      "connectDB", "C:/xampp/htdocs/collaborations/speedrun-tbd/functions/connectDB.py")
-  lib2 = iutil.spec_from_file_location(
-      "update", "C:/xampp/htdocs/collaborations/speedrun-tbd/functions/update.py")
+    lib1 = iutil.spec_from_file_location(
+        "connectDB", "C:/xampp/htdocs/collaborations/speedrun-tbd/functions/connectDB.py")
+    lib2 = iutil.spec_from_file_location(
+        "update", "C:/xampp/htdocs/collaborations/speedrun-tbd/functions/update.py")
 
-  connectDB = iutil.module_from_spec(lib1)
-  updateData = iutil.module_from_spec(lib2)
+    connectDB = iutil.module_from_spec(lib1)
+    updateData = iutil.module_from_spec(lib2)
 
-  lib1.loader.exec_module(connectDB)
-  lib2.loader.exec_module(updateData)
+    lib1.loader.exec_module(connectDB)
+    lib2.loader.exec_module(updateData)
 
-  # test connection successful
-  connect = connectDB.connection("localhost", "root", "root", "db_tokomainan")
+    # test connection successful
+    connect = connectDB.connection(
+        "localhost", "root", "root", "db_tokomainan")
 
-  updateData.update(connect, sql, val)
+    updateData.update(connect, sql, val)
+
 
 def delete(sql, val):
-  lib1 = iutil.spec_from_file_location(
-      "connectDB", "C:/xampp/htdocs/collaborations/speedrun-tbd/functions/connectDB.py")
-  lib2 = iutil.spec_from_file_location(
-      "delete", "C:/xampp/htdocs/collaborations/speedrun-tbd/functions/delete.py")
+    lib1 = iutil.spec_from_file_location(
+        "connectDB", "C:/xampp/htdocs/collaborations/speedrun-tbd/functions/connectDB.py")
+    lib2 = iutil.spec_from_file_location(
+        "delete", "C:/xampp/htdocs/collaborations/speedrun-tbd/functions/delete.py")
 
-  connectDB = iutil.module_from_spec(lib1)
-  deleteData = iutil.module_from_spec(lib2)
+    connectDB = iutil.module_from_spec(lib1)
+    deleteData = iutil.module_from_spec(lib2)
 
-  lib1.loader.exec_module(connectDB)
-  lib2.loader.exec_module(deleteData)
+    lib1.loader.exec_module(connectDB)
+    lib2.loader.exec_module(deleteData)
 
-  # test connection successful
-  connect = connectDB.connection("localhost", "root", "root", "db_tokomainan")
+    # test connection successful
+    connect = connectDB.connection(
+        "localhost", "root", "root", "db_tokomainan")
 
-  deleteData.delete(connect, sql, val)
+    deleteData.delete(connect, sql, val)
+
 
 def tampilMainan():
-  sqlProduk = '''
+    sqlProduk = '''
       SELECT *
       FROM tbl_produk;
       '''
-  result = tampil(sqlProduk)
-  for res in result:
-    print(res)
+    result = tampil(sqlProduk)
+    for res in result:
+        print(res)
 
-  return result
+    return result
+
 
 def tampilPembeli():
-  sqlPembeli = '''
+    sqlPembeli = '''
       SELECT *
       FROM tbl_pembeli;
       '''
-  result = tampil(sqlPembeli)
-  for res in result:
-    print(res)
+    result = tampil(sqlPembeli)
+    for res in result:
+        print(res)
 
-  return result
+    return result
+
 
 def tambahMainan():
-  namaProduk = input('Nama Mainan: ')
-  harga = int(input('Harga Mainan: '))
+    namaProduk = input('Nama Mainan: ')
+    harga = int(input('Harga Mainan: '))
 
-  sqlProduk = '''
+    sqlProduk = '''
       INSERT INTO tbl_produk ( namaProduk, harga) 
       VALUES ( %s, %s)
       '''
 
-  valProduk = [
-      (namaProduk, harga)
-  ]
+    valProduk = [
+        (namaProduk, harga)
+    ]
 
-  tambah(sqlProduk, valProduk)
+    tambah(sqlProduk, valProduk)
+
 
 def tambahPelanggan():
-  namaPembeli = input('Nama Pembeli: ')
-  alamat = input('Alamat Pembeli: ')
-  hp = input('No HP Pembeli: ')
+    namaPembeli = input('Nama Pembeli: ')
+    alamat = input('Alamat Pembeli: ')
+    hp = input('No HP Pembeli: ')
 
-  sqlPembeli = '''
+    sqlPembeli = '''
       INSERT INTO tbl_pembeli ( namaPembeli, alamat, hp) 
       VALUES ( %s, %s, %s)
       '''
 
-  valPembeli = [
-      (namaPembeli, alamat, hp)
-  ]
+    valPembeli = [
+        (namaPembeli, alamat, hp)
+    ]
 
-  tambah(sqlPembeli, valPembeli)
+    tambah(sqlPembeli, valPembeli)
+
 
 def ubahMainan():
-  namaProduk = input('Nama Mainan yang ingin diubah: ')
-  harga = int(input('Harga baru Mainan: '))
-  # update di tbl_produk
+    tampilMainan()
+    namaProduk = input('Nama Mainan yang ingin diubah: ')
+    harga = int(input('Harga baru Mainan: '))
+    # update di tbl_produk
 
-  sqlProduk = '''
+    sqlProduk = '''
       UPDATE tbl_produk SET namaProduk=%s, harga=%s
       WHERE namaProduk=%s
       '''
 
-  valProduk = [
-      (namaProduk, harga, namaProduk)
-  ]
+    valProduk = (namaProduk, harga, namaProduk)
 
-  update(sqlProduk, valProduk)
+    update(sqlProduk, valProduk)
+
 
 def hapusMainan():
-  namaProduk = input('Nama Mainan yang ingin dihapus: ')
-  # delete dari tbl_produk
+    tampilMainan()
+    namaProduk = input('Nama Mainan yang ingin dihapus: ')
+    # delete dari tbl_produk
 
-  sqlProduk = '''
+    sqlProduk = '''
       DELETE FROM tbl_produk WHERE namaProduk=%s
       '''
 
-  valProduk = [
-      (namaProduk)
-  ]
+    valProduk = [
+        (namaProduk)
+    ]
 
-  delete(sqlProduk, valProduk)
+    delete(sqlProduk, valProduk)
+
 
 def catatPemesanan():
-  tampilPembeli()
-  idPembeli = int(input('ID Pelanggan yang beli: '))
+    tampilPembeli()
+    idPembeli = int(input('ID Pelanggan yang beli: '))
 
-  tampilMainan()
-  idProduk = int(input('ID Mainan yang dibeli: '))
-  
-  harga = 0 #ambil harga produk yang dibeli
-  jumlah = int(input('Jumlah beli: '))
-  total = jumlah * harga
-  from datetime import date
-  tanggal = date.today()
+    tampilMainan()
+    idProduk = int(input('ID Mainan yang dibeli: '))
 
-  idProduk = 0 #ambil id produk pakai read tbl_produk
-  idPembeli = 0 #ambil id pembeli pakai read tbl_pembeli
+    harga = 0  # ambil harga produk yang dibeli
+    jumlah = int(input('Jumlah beli: '))
+    total = jumlah * harga
+    from datetime import date
+    tanggal = date.today()
 
-  # insert ke tbl_pemesanan
+    idProduk = 0  # ambil id produk pakai read tbl_produk
+    idPembeli = 0  # ambil id pembeli pakai read tbl_pembeli
 
-  
+    # insert ke tbl_pemesanan
+
 
 def main():
-  pilih = 0
-  
-  while pilih != 8:
-    print('-= TOKO MAINAN UHUY =-')
-    print('1. Lihat Etalase Mainan')
-    print('2. Tambah Mainan')
-    print('3. Ubah Mainan')
-    print('4. Hapus Mainan')
-    print('5. Tambah Pelanggan')
-    print('6. Tambah Pelanggan')
-    print('7. Catat Pemesanan Mainan')
-    print('8. Keluar')
+    pilih = 0
 
-    pilih = int(input('Pilih Operasi: '))
+    while pilih != 8:
+        cprint('-= TOKO MAINAN UHUY =-', 'red', 'on_cyan')
+        print('1. Lihat Etalase Mainan')
+        print('2. Tambah Mainan')
+        print('3. Ubah Mainan')
+        print('4. Hapus Mainan')
+        print('5. Lihat Pelanggan')
+        print('6. Tambah Pelanggan')
+        print('7. Catat Pemesanan Mainan')
+        print('8. Keluar')
 
-    if pilih == 1: tampilMainan()
-    if pilih == 2: tambahMainan()
-    if pilih == 3: ubahMainan()
-    if pilih == 4: hapusMainan()
-    if pilih == 5: tampilPembeli()
-    if pilih == 6: tambahPelanggan()
-    if pilih == 7: catatPemesanan()
+        print("\n")
+        pilih = int(input('Pilih Operasi: '))
+
+        if pilih == 1:
+            tampilMainan()
+        if pilih == 2:
+            tambahMainan()
+        if pilih == 3:
+            ubahMainan()
+        if pilih == 4:
+            hapusMainan()
+        if pilih == 5:
+            tampilPembeli()
+        if pilih == 6:
+            tambahPelanggan()
+        if pilih == 7:
+            catatPemesanan()
+        print("\n")
+
 
 if __name__ == '__main__':
-  main()
+    main()

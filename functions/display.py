@@ -1,4 +1,5 @@
 import mysql.connector
+from termcolor import cprint
 
 
 def read_query(connection, query):
@@ -9,4 +10,4 @@ def read_query(connection, query):
         result = cursor.fetchall()
         return result
     except Error as err:
-        print(f"Error:  '{err}'")
+        cprint(f"Error:  '{err}'", 'white', 'on_red')

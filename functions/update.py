@@ -10,4 +10,4 @@ def update(connection, sql, val):
         connection.commit()
         cprint("Data berhasil di update", 'green', 'on_green')
     except Error as err:
-        print(f"Error: '{err}'")
+        cprint(f"Error: '{err}'", 'white', 'on_red')
