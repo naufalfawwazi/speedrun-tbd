@@ -23,3 +23,5 @@
     │   |   ├── namaPembeli [VARCHAR(255) NOT NULL]
     │   |   ├── alamat      [TEXT NOT NULL]
     │   |   ├── hp          [VARCHAR(16) NOT NULL]
+
+## Folder Structure:
