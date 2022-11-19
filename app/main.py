@@ -10,13 +10,15 @@ Original file is located at
 from importlib import util as iutil
 from termcolor import cprint
 from datetime import date
+import os.path
 
+
+lib1 = iutil.spec_from_file_location(
+    "connectDB", open(os.path.dirname(__file__) + '/../functions/connectDB.py'))
 
 def tampil(sql):
-    lib1 = iutil.spec_from_file_location(
-        "connectDB", "C:/xampp/htdocs/collaborations/speedrun-tbd/functions/connectDB.py")
     lib2 = iutil.spec_from_file_location(
-        "insertMany", "C:/xampp/htdocs/collaborations/speedrun-tbd/functions/display.py")
+        "insertMany", open(os.path.dirname(__file__) + '/../functions/display.py'))
     connectDB = iutil.module_from_spec(lib1)
     displayData = iutil.module_from_spec(lib2)
 
@@ -32,10 +34,8 @@ def tampil(sql):
 
 
 def tambah(sql, val):
-    lib1 = iutil.spec_from_file_location(
-        "connectDB", "C:/xampp/htdocs/collaborations/speedrun-tbd/functions/connectDB.py")
     lib2 = iutil.spec_from_file_location(
-        "insertMany", "C:/xampp/htdocs/collaborations/speedrun-tbd/functions/insertMany.py")
+        "insertMany", open(os.path.dirname(__file__) + '/../functions/insertMany.py'))
 
     connectDB = iutil.module_from_spec(lib1)
     insertMany = iutil.module_from_spec(lib2)
@@ -51,10 +51,8 @@ def tambah(sql, val):
 
 
 def update(sql, val):
-    lib1 = iutil.spec_from_file_location(
-        "connectDB", "C:/xampp/htdocs/collaborations/speedrun-tbd/functions/connectDB.py")
     lib2 = iutil.spec_from_file_location(
-        "update", "C:/xampp/htdocs/collaborations/speedrun-tbd/functions/update.py")
+        "update", open(os.path.dirname(__file__) + '/../functions/update.py'))
 
     connectDB = iutil.module_from_spec(lib1)
     updateData = iutil.module_from_spec(lib2)
@@ -70,14 +68,12 @@ def update(sql, val):
 
 
 def delete(sql, val):
-    lib1 = iutil.spec_from_file_location(
-        "connectDB", "C:/xampp/htdocs/collaborations/speedrun-tbd/functions/connectDB.py")
     lib2 = iutil.spec_from_file_location(
-        "delete", "C:/xampp/htdocs/collaborations/speedrun-tbd/functions/delete.py")
+        "delete", open(os.path.dirname(__file__) + '/../functions/delete.py'))
 
     connectDB = iutil.module_from_spec(lib1)
     deleteData = iutil.module_from_spec(lib2)
-
+    
     lib1.loader.exec_module(connectDB)
     lib2.loader.exec_module(deleteData)
 
