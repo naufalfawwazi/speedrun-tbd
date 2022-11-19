@@ -10,15 +10,23 @@ Original file is located at
 from importlib import util as iutil
 from termcolor import cprint
 from datetime import date
-import os.path
+import os
 
 
+path = os.path.realpath(__file__)
+dir = os.path.dirname(path)
+dir = dir.replace('app', 'functions')
+os.chdir(dir)
+
+dir1 = dir + '\\connectDB.py';
+lib1 = iutil.spec_from_file_location(
+    "connectDB", dir1)
 
 def tampil(sql):
-    lib1 = iutil.spec_from_file_location(
-        "connectDB", str(open(os.path.dirname(__file__) + '/../functions/connectDB.py')))
+    dir2 = dir + '\\display.py'
+
     lib2 = iutil.spec_from_file_location(
-        "insertMany", str(open(os.path.dirname(__file__) + '/../functions/display.py')))
+        "display", dir2)
     connectDB = iutil.module_from_spec(lib1)
     displayData = iutil.module_from_spec(lib2)
 
@@ -34,10 +42,10 @@ def tampil(sql):
 
 
 def tambah(sql, val):
-    lib1 = iutil.spec_from_file_location(
-        "connectDB", str(open(os.path.dirname(__file__) + '/../functions/connectDB.py')))
+    dir2 = dir + '\\insertMany.py'
+
     lib2 = iutil.spec_from_file_location(
-        "insertMany", str(open(os.path.dirname(__file__) + '/../functions/insertMany.py')))
+        "insertMany", dir2)
 
     connectDB = iutil.module_from_spec(lib1)
     insertMany = iutil.module_from_spec(lib2)
@@ -53,10 +61,10 @@ def tambah(sql, val):
 
 
 def update(sql, val):
-    lib1 = iutil.spec_from_file_location(
-        "connectDB", str(open(os.path.dirname(__file__) + '/../functions/connectDB.py')))
+    dir2 = dir + '\\update.py'
+
     lib2 = iutil.spec_from_file_location(
-        "update", str(open(os.path.dirname(__file__) + '/../functions/update.py')))
+        "update", dir2)
 
     connectDB = iutil.module_from_spec(lib1)
     updateData = iutil.module_from_spec(lib2)
@@ -72,10 +80,10 @@ def update(sql, val):
 
 
 def delete(sql, val):
-    lib1 = iutil.spec_from_file_location(
-        "connectDB", str(open(os.path.dirname(__file__) + '/../functions/connectDB.py')))
+    dir2 = dir + '\\delete.py'
+
     lib2 = iutil.spec_from_file_location(
-        "delete", str(open(os.path.dirname(__file__) + '/../functions/delete.py')))
+        "delete", dir2)
 
     connectDB = iutil.module_from_spec(lib1)
     deleteData = iutil.module_from_spec(lib2)
