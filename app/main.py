@@ -14,11 +14,11 @@ import os.path
 
 
 lib1 = iutil.spec_from_file_location(
-    "connectDB", open(os.path.dirname(__file__) + '/../functions/connectDB.py'))
+    "connectDB", str(open(os.path.dirname(__file__) + '/../functions/connectDB.py')))
 
 def tampil(sql):
     lib2 = iutil.spec_from_file_location(
-        "insertMany", open(os.path.dirname(__file__) + '/../functions/display.py'))
+        "insertMany", str(open(os.path.dirname(__file__) + '/../functions/display.py')))
     connectDB = iutil.module_from_spec(lib1)
     displayData = iutil.module_from_spec(lib2)
 
@@ -35,7 +35,7 @@ def tampil(sql):
 
 def tambah(sql, val):
     lib2 = iutil.spec_from_file_location(
-        "insertMany", open(os.path.dirname(__file__) + '/../functions/insertMany.py'))
+        "insertMany", str(open(os.path.dirname(__file__) + '/../functions/insertMany.py')))
 
     connectDB = iutil.module_from_spec(lib1)
     insertMany = iutil.module_from_spec(lib2)
@@ -52,7 +52,7 @@ def tambah(sql, val):
 
 def update(sql, val):
     lib2 = iutil.spec_from_file_location(
-        "update", open(os.path.dirname(__file__) + '/../functions/update.py'))
+        "update", str(open(os.path.dirname(__file__) + '/../functions/update.py')))
 
     connectDB = iutil.module_from_spec(lib1)
     updateData = iutil.module_from_spec(lib2)
@@ -69,11 +69,11 @@ def update(sql, val):
 
 def delete(sql, val):
     lib2 = iutil.spec_from_file_location(
-        "delete", open(os.path.dirname(__file__) + '/../functions/delete.py'))
+        "delete", str(open(os.path.dirname(__file__) + '/../functions/delete.py')))
 
     connectDB = iutil.module_from_spec(lib1)
     deleteData = iutil.module_from_spec(lib2)
-    
+
     lib1.loader.exec_module(connectDB)
     lib2.loader.exec_module(deleteData)
 
