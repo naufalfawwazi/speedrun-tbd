@@ -13,10 +13,10 @@ from datetime import date
 import os.path
 
 
-lib1 = iutil.spec_from_file_location(
-    "connectDB", str(open(os.path.dirname(__file__) + '/../functions/connectDB.py')))
 
 def tampil(sql):
+    lib1 = iutil.spec_from_file_location(
+        "connectDB", str(open(os.path.dirname(__file__) + '/../functions/connectDB.py')))
     lib2 = iutil.spec_from_file_location(
         "insertMany", str(open(os.path.dirname(__file__) + '/../functions/display.py')))
     connectDB = iutil.module_from_spec(lib1)
@@ -34,6 +34,8 @@ def tampil(sql):
 
 
 def tambah(sql, val):
+    lib1 = iutil.spec_from_file_location(
+        "connectDB", str(open(os.path.dirname(__file__) + '/../functions/connectDB.py')))
     lib2 = iutil.spec_from_file_location(
         "insertMany", str(open(os.path.dirname(__file__) + '/../functions/insertMany.py')))
 
@@ -51,6 +53,8 @@ def tambah(sql, val):
 
 
 def update(sql, val):
+    lib1 = iutil.spec_from_file_location(
+        "connectDB", str(open(os.path.dirname(__file__) + '/../functions/connectDB.py')))
     lib2 = iutil.spec_from_file_location(
         "update", str(open(os.path.dirname(__file__) + '/../functions/update.py')))
 
@@ -68,6 +72,8 @@ def update(sql, val):
 
 
 def delete(sql, val):
+    lib1 = iutil.spec_from_file_location(
+        "connectDB", str(open(os.path.dirname(__file__) + '/../functions/connectDB.py')))
     lib2 = iutil.spec_from_file_location(
         "delete", str(open(os.path.dirname(__file__) + '/../functions/delete.py')))
 
