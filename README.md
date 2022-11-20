@@ -42,3 +42,5 @@
     │   |   ├── namaPembeli [VARCHAR(255) NOT NULL]
     │   |   ├── alamat      [TEXT NOT NULL]
     │   |   ├── hp          [VARCHAR(16) NOT NULL]
+
+### Credit: github.com/naufalfawwazi/speedrun-tbd

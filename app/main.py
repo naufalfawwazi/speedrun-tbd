@@ -35,7 +35,7 @@ def tampil(sql):
 
     # test connection successful
     connect = connectDB.connection(
-        "localhost", "root", "root", "db_tokomainan")
+        "localhost", "root", "", "db_tokomainan")
 
     results = displayData.read_query(connect, sql)
     return results
@@ -55,7 +55,7 @@ def tambah(sql, val):
 
     # test connection successful
     connect = connectDB.connection(
-        "localhost", "root", "root", "db_tokomainan")
+        "localhost", "root", "", "db_tokomainan")
 
     insertMany.insertMany(connect, sql, val)
 
@@ -74,7 +74,7 @@ def update(sql, val):
 
     # test connection successful
     connect = connectDB.connection(
-        "localhost", "root", "root", "db_tokomainan")
+        "localhost", "root", "", "db_tokomainan")
 
     updateData.update(connect, sql, val)
 
@@ -93,7 +93,7 @@ def delete(sql, val):
 
     # test connection successful
     connect = connectDB.connection(
-        "localhost", "root", "root", "db_tokomainan")
+        "localhost", "root", "", "db_tokomainan")
 
     deleteData.delete(connect, sql, val)
 
