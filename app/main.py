@@ -247,7 +247,7 @@ def main():
         cprint('-= TOKO MAINAN UHUY =-', 'red', 'on_cyan')
         print('1. Lihat Etalase Mainan')
         print('2. Tambah Mainan')
-        print('3. Ubah Mainan')
+        print('3. Ubah Harga Mainan')
         print('4. Hapus Mainan')
         print('5. Lihat Pelanggan')
         print('6. Tambah Pelanggan')
