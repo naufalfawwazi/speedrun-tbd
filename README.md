@@ -4,7 +4,7 @@
 
 ## GUIDE:
 
-`pip install MySQL-python`
+`pip install mysql-connector-python`
 ` pip install termcolor`
 
 ## Folder Structure:
